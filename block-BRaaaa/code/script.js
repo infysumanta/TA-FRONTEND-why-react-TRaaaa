@@ -1,26 +1,28 @@
 let input = document.querySelector("input");
 var root = document.querySelector("ul");
 
-// State to store movies
-var moviesList = [];
-
 // Handling Watched/Unwatched
 function handleToggle(event) {
   let id = event.target.dataset.id;
+  let moviesList = Array.from(JSON.parse(localStorage.getItem("moviesList")));
   moviesList[id].isWatched = !moviesList[id].isWatched;
-  displayMovies(moviesList);
+  localStorage.setItem("moviesList", JSON.stringify(moviesList));
+  displayMovies();
 }
 
 // Handling Delete
 function handleDelete(event) {
-  let id = event.target.dataset.id;
-  moviesList.splice(id, 1);
-  displayMovies(moviesList);
+  let moviesList = Array.from(JSON.parse(localStorage.getItem("moviesList")));
+  moviesList.splice(event.target.dataset.id, 1);
+  localStorage.setItem("moviesList", JSON.stringify(moviesList));
+  displayMovies();
 }
 
 // Display Movies
-function displayMovies(moviesArr = []) {
+function displayMovies() {
   root.innerHTML = "";
+  if (localStorage.getItem("moviesList") == null) return;
+  let moviesArr = Array.from(JSON.parse(localStorage.getItem("moviesList")));
   moviesArr.forEach((elm, index) => {
     let li = document.createElement("li");
     li.classList.add("flex-1");
@@ -49,14 +51,18 @@ function displayMovies(moviesArr = []) {
 // Handling Input
 input.addEventListener("keyup", (event) => {
   if (event.keyCode === 13 && event.target.value) {
-    moviesList.push({
-      name: event.target.value,
-      isWatched: false,
-    });
+    localStorage.setItem(
+      "moviesList",
+      JSON.stringify([
+        ...JSON.parse(localStorage.getItem("moviesList") || "[]"),
+        { name: event.target.value, isWatched: false },
+      ])
+    );
+
     event.target.value = "";
-    displayMovies(moviesList);
+    displayMovies();
   }
 });
 
 // Calling Display Movies
-displayMovies(moviesList);
+displayMovies();
