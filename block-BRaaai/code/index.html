@@ -35,41 +35,60 @@
     <div id="root"></div>
     <script type="text/babel">
       const root = ReactDOM.createRoot(document.getElementById("root"));
-      let Card = (
-        <div className="card">
-          <article>
-            <div className="imgBox">
-              <img
-                className="full-width"
-                src="https://images.unsplash.com/photo-1506428164964-037fb4f05d8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
-              />
+      let Card = (props) => {
+        return (
+          <div className="card flex-32">
+            <article>
+              <div className="photosBox">
+                <img
+                  className="full-width"
+                  src="https://images.unsplash.com/photo-1610874933184-7728fd666162?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+                  alt="Marusthal"
+                />
 
-              <div className="photos">PHOTOS</div>
-              <div className="date">
-                <p>27</p>MAR
+                <div className="photos">PHOTOS</div>
+                <div className="date">
+                  <p>27</p>MAR
+                </div>
               </div>
-            </div>
-            <div className="articleBody">
-              <h2>City Lights In New York</h2>
-              <q>The city that never sleeps.</q>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Voluptatem consequatur, sit nobis, atque veritatis praesentium
-                minima sint, dolores aliquam impedit aperiam voluptatum ad modi
-                vitae iusto rem perferendis corporis delectus?
-              </p>
+              <div>
+                <div>
+                  <h2>{props.name}</h2>
+                  <q>The city that never sleeps.</q>
+                  <p>
+                    New York, the largest city in the U.S., is an architectural
+                    marvel with plenty of historic monuments, magnificent
+                    buildings and countless dazzling skyscrapers.
+                  </p>
+                </div>
+                <div>
+                  <span>
+                    <i className="far fa-clock"></i> 6 minutes ago{" "}
+                  </span>
+                  <span>
+                    <i className="fas fa-comments"></i> 39 comments
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+        );
+      };
 
-              <span>
-                <i className="far fa-clock"></i> 6 minutes ago{" "}
-              </span>
-              <span>
-                <i className="fas fa-comments"></i> 39 comments
-              </span>
-            </div>
-          </article>
-        </div>
+      let cards = (
+        <>
+          <header>
+            <h1>All Articles</h1>
+            <p>Collection of best articles on Startups</p>
+          </header>
+          <div className="display-flex">
+            <Card name="City Lights in New York" />
+            <Card name="City Lights in New York" />
+            <Card name="City Lights in New York" />
+          </div>
+        </>
       );
-      root.render(Card);
+      root.render(cards);
     </script>
   </body>
 </html>
