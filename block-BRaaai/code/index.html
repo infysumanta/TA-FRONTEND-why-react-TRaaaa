@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Title-->
+    <title>Card</title>
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!--Font Awesome-->
+    <script
+      src="https://kit.fontawesome.com/5cc6fb9f6b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      let Card = (
+        <div className="card">
+          <article>
+            <div className="imgBox">
+              <img
+                className="full-width"
+                src="https://images.unsplash.com/photo-1506428164964-037fb4f05d8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+              />
+
+              <div className="photos">PHOTOS</div>
+              <div className="date">
+                <p>27</p>MAR
+              </div>
+            </div>
+            <div className="articleBody">
+              <h2>City Lights In New York</h2>
+              <q>The city that never sleeps.</q>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Voluptatem consequatur, sit nobis, atque veritatis praesentium
+                minima sint, dolores aliquam impedit aperiam voluptatum ad modi
+                vitae iusto rem perferendis corporis delectus?
+              </p>
+
+              <span>
+                <i className="far fa-clock"></i> 6 minutes ago{" "}
+              </span>
+              <span>
+                <i className="fas fa-comments"></i> 39 comments
+              </span>
+            </div>
+          </article>
+        </div>
+      );
+      root.render(Card);
+    </script>
+  </body>
+</html>
